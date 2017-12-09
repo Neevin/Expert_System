@@ -29,7 +29,24 @@ namespace Expert_System
             openFile.ShowDialog();
             string path = openFile.FileName;
 
+            parser.ParseFile(path);
+
+            PrintObjects(parser.Objects);
+            QuestionsText.Text = parser.Questions;
+            AutorText.Text = parser.Autor;
+     
 
         }
+
+        void PrintObjects(Object[] obj)
+        {
+            string Objects = "";
+            for (int i = 0; i < obj.Length; i++)
+            {
+                Objects += obj[i].Name + "[" + obj[i].pConst + "]" + "\n";
+            }
+            ObjectsText.Text = Objects;
+        }
+
     }
 }

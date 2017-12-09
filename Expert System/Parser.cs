@@ -14,9 +14,13 @@ namespace Expert_System
         public string Autor;
         public Object[] Objects;
         public string Questions;
+        CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
 
         public void ParseFile(string path)
         {
+            //Отображение чисел через точку
+            
+            ci.NumberFormat.NumberDecimalSeparator = ".";
             try
             {
                 FileStream fs = new FileStream(path, FileMode.Open);
@@ -42,7 +46,7 @@ namespace Expert_System
                 string[] Q = AutorQuestionsObjects[1].Split(':');
                 this.Questions = Q[1];
 
-               
+                this.Objects = parseObjects(AutorQuestionsObjects[2]);
                 reader.Close();
 
             }
@@ -53,4 +57,39 @@ namespace Expert_System
             }
         }
 
-      
+        public Object[] parseObjects(string AQO)
+        {
+            
+         
+            string[] ObjectsAndP = AQO.Split('\r');
+            Object[] Objects = new Object[ObjectsAndP.Length - 1];
+            
+            //На каждый объект создаем свой экземпляр
+            for (int i = 0; i < ObjectsAndP.Length - 1; i++)
+            {
+                Objects[i] = new Object();
+            }
+
+            for (int i = 1, o=0; i < ObjectsAndP.Length; i++, o++)
+            {
+
+                string[] Object = ObjectsAndP[i].Split(',');
+                Objects[o].Name = Object[0];
+                Objects[o].pConst = double.Parse(Object[1], ci);
+
+                for (int j = 2; j < Object.Length; j++)
+                {
+                    int number = Convert.ToInt32(Object[j]);
+                    j++;
+                    double pPlus1 = double.Parse(Object[j], ci);
+                    j++;
+                    double pMinus1 = double.Parse(Object[j], ci);
+                    Question quest = new Question(pPlus1, pMinus1);
+                    Objects[o].Questions.Add(number, quest);
+                }
+
+            }
+            return Objects;
+        }
+    }
+}
