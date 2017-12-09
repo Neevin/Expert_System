@@ -1,1 +1,2 @@
 C:\GitHub\jom\Expert System\Expert System\bin\Debug\Expert System.exe.config
+C:\GitHub\jom\Expert_System\Expert System\bin\Debug\Expert System.exe.config
