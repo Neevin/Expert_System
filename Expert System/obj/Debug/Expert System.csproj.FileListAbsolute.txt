@@ -7,3 +7,4 @@ C:\GitHub\jom\Expert_System\Expert System\obj\Debug\Expert_System.Properties.Res
 C:\GitHub\jom\Expert_System\Expert System\obj\Debug\Expert System.csproj.GenerateResource.Cache
 C:\GitHub\jom\Expert_System\Expert System\obj\Debug\Expert System.exe
 C:\GitHub\jom\Expert_System\Expert System\obj\Debug\Expert System.pdb
+C:\GitHub\jom\Expert_System\Expert System\obj\Debug\Expert System.csprojResolveAssemblyReference.cache

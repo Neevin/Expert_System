@@ -13,6 +13,9 @@ namespace Expert_System
     public partial class Form1 : Form
     {
         Parser parser = new Parser();
+        string Questions="";
+        string Autor = "";
+        Object[] Objects;
         public Form1()
         {
             InitializeComponent();
@@ -31,14 +34,45 @@ namespace Expert_System
 
             parser.ParseFile(path);
 
-            PrintObjects(parser.Objects);
-            QuestionsText.Text = parser.Questions;
-            AutorText.Text = parser.Autor;
-     
+            Questions = parser.Questions;
+            Autor = parser.Autor;
+            Objects = parser.Objects;
 
+            Reload();
+
+            GoButton.Enabled = true;
         }
 
-        void PrintObjects(Object[] obj)
+        
+
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            //Вывод первого вопроса
+            Reload();
+            NextButton.Enabled = true;
+            string[] Quest = Questions.Split('\r');
+            QuestionText.Text = Quest[1];
+        }
+
+        void Reload()
+        {
+            string TextObjects = "";
+            //Работа со Текстом/Строкой Объектов
+            for (int i = 0; i < Objects.Length; i++)
+            {
+                Objects[i].pCurrent = Objects[i].pConst;
+            }
+            for (int i = 0; i < Objects.Length; i++)
+            {
+                TextObjects += Objects[i].Name + "[" + parser.Objects[i].pConst + "]" + "\n";
+            }
+
+            ObjectsText.Text = TextObjects;
+            QuestionsText.Text = Questions;
+            AutorText.Text = Autor;
+        }
+
+     /*   void PrintObjects(Object[] obj)
         {
             string Objects = "";
             for (int i = 0; i < obj.Length; i++)
@@ -46,7 +80,7 @@ namespace Expert_System
                 Objects += obj[i].Name + "[" + obj[i].pConst + "]" + "\n";
             }
             ObjectsText.Text = Objects;
-        }
+        }*/
 
     }
 }

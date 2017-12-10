@@ -102,15 +102,18 @@
             // 
             // GoButton
             // 
+            this.GoButton.Enabled = false;
             this.GoButton.Location = new System.Drawing.Point(160, 395);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(91, 29);
             this.GoButton.TabIndex = 7;
             this.GoButton.Text = "Go";
             this.GoButton.UseVisualStyleBackColor = true;
+            this.GoButton.Click += new System.EventHandler(this.GoButton_Click);
             // 
             // NextButton
             // 
+            this.NextButton.Enabled = false;
             this.NextButton.Location = new System.Drawing.Point(435, 333);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(91, 29);
