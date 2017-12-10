@@ -33,7 +33,7 @@
             this.ObjectsText = new System.Windows.Forms.RichTextBox();
             this.QuestionText = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.AnswerText = new System.Windows.Forms.RichTextBox();
             this.OpenFileButton = new System.Windows.Forms.Button();
             this.GoButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
@@ -82,13 +82,13 @@
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "Введите число от -5 до 5.\n-5 НЕТ; 5 ДА ; 0 НЕЗНАЮ";
             // 
-            // richTextBox2
+            // AnswerText
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(402, 290);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(124, 37);
-            this.richTextBox2.TabIndex = 5;
-            this.richTextBox2.Text = "";
+            this.AnswerText.Location = new System.Drawing.Point(402, 290);
+            this.AnswerText.Name = "AnswerText";
+            this.AnswerText.Size = new System.Drawing.Size(124, 37);
+            this.AnswerText.TabIndex = 5;
+            this.AnswerText.Text = "";
             // 
             // OpenFileButton
             // 
@@ -120,6 +120,7 @@
             this.NextButton.TabIndex = 8;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // openFile
             // 
@@ -133,7 +134,7 @@
             this.Controls.Add(this.NextButton);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(this.OpenFileButton);
-            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.AnswerText);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.QuestionText);
             this.Controls.Add(this.ObjectsText);
@@ -152,7 +153,7 @@
         private System.Windows.Forms.RichTextBox ObjectsText;
         private System.Windows.Forms.RichTextBox QuestionText;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox AnswerText;
         private System.Windows.Forms.Button OpenFileButton;
         private System.Windows.Forms.Button GoButton;
         private System.Windows.Forms.Button NextButton;
