@@ -18,7 +18,7 @@ namespace Expert_System
             pCurrent = pConst;
         }
 
-        void Calculate(int Otv,int NubmerQuestion)
+        public void Calculate(int Otv,int NubmerQuestion)
         {
             if (Otv == 5)
             {
@@ -27,36 +27,25 @@ namespace Expert_System
             }
             if (Otv == -5)
             {
-                for (int i = 0; i < Objects.Length; i++)
-                {
                     //Pc = ((1-Pplus)*Pc) / ((1-Pplus)* Pc) - (Pminus * (1 - Pc))
-                    Objects[i].pCurrent = ((1 - Objects[i].Questions[NubmerQuestion].pPlus) * Objects[i].pCurrent) / ((1 - Objects[i].Questions[NubmerQuestion].pPlus) * Objects[i].pCurrent) - (Objects[i].Questions[NubmerQuestion].pMinus * (1 - Objects[i].pCurrent));
-                }
+                   pCurrent = ((1 - Questions[NubmerQuestion].pPlus) * pCurrent) / ((1 - Questions[NubmerQuestion].pPlus) * pCurrent) - (Questions[NubmerQuestion].pMinus * (1 - pCurrent));
             }
             if (Otv > -5 && Otv < 0)
             {
-                for (int i = 0; i < Objects.Length; i++)
-                {
                     //Pc = (((Otv+5) * (Pc - Pminus)) / 5) + Pminus
-                    Objects[i].pCurrent = (((Otv + 5) * (Objects[i].pCurrent - Objects[i].Questions[NubmerQuestion].pMinus)) / 5) + Objects[i].Questions[NubmerQuestion].pMinus;
-                }
+                    pCurrent = (((Otv + 5) * (pCurrent - Questions[NubmerQuestion].pMinus)) / 5) + Questions[NubmerQuestion].pMinus;
             }
             if (Otv > 0 && Otv < 5)
             {
-                for (int i = 0; i < Objects.Length; i++)
-                {
                     //Pc = (((Otv-0) * (Pplus - Pc)) / 5) + Pc
-                    Objects[i].pCurrent = (((Otv - 0) * (Objects[i].Questions[NubmerQuestion].pPlus - Objects[i].pCurrent)) / 5) + Objects[i].pCurrent;
-                }
+                    pCurrent = (((Otv - 0) * (Questions[NubmerQuestion].pPlus - pCurrent)) / 5) + pCurrent;
             }
             if (Otv == 0)
             {
-                for (int i = 0; i < parser.Objects.Length; i++)
-                {
                     //Pc = Pc
-                    Objects[i].pCurrent = Objects[i].pCurrent;
-                }
+                   pCurrent = pCurrent;
             }
+
         }
     }
 }

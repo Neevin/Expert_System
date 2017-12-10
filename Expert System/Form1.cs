@@ -85,51 +85,12 @@ namespace Expert_System
                 "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            //Подсчёт
             int Otv = Convert.ToInt32(AnswerText.Text);
             for(int i = 0; i < Objects.Length; i++)
             {
                 Objects[i].Calculate(Otv, NubmerQuestion);
             }
-        /*    if (Otv == 5)
-            {
-                for (int i = 0; i < Objects.Length; i++)
-                {
-                    //Pc = (Pplus * Pc) / (Pplus * Pc) + (Pminus - (1 - Pc)) 
-                    Objects[i].pCurrent = (Objects[i].Questions[NubmerQuestion].pPlus * Objects[i].pCurrent) / ((Objects[i].Questions[NubmerQuestion].pPlus * Objects[i].pCurrent) + (Objects[i].Questions[NubmerQuestion].pMinus * (1 - Objects[i].pCurrent)));
-                }
-            }
-            if (Otv == -5)
-            {
-                for (int i = 0; i < Objects.Length; i++)
-                {
-                    //Pc = ((1-Pplus)*Pc) / ((1-Pplus)* Pc) - (Pminus * (1 - Pc))
-                    Objects[i].pCurrent = ((1 - Objects[i].Questions[NubmerQuestion].pPlus) * Objects[i].pCurrent) / ((1 - Objects[i].Questions[NubmerQuestion].pPlus) * Objects[i].pCurrent) - (Objects[i].Questions[NubmerQuestion].pMinus * (1 - Objects[i].pCurrent));
-                }
-            }
-            if (Otv > -5 && Otv < 0)
-            {
-                for (int i = 0; i < Objects.Length; i++)
-                {
-                    //Pc = (((Otv+5) * (Pc - Pminus)) / 5) + Pminus
-                    Objects[i].pCurrent = (((Otv + 5) * (Objects[i].pCurrent - Objects[i].Questions[NubmerQuestion].pMinus)) / 5) + Objects[i].Questions[NubmerQuestion].pMinus;
-                }
-            }
-            if (Otv > 0 && Otv < 5)
-            {
-                for (int i = 0; i < Objects.Length; i++)
-                {
-                    //Pc = (((Otv-0) * (Pplus - Pc)) / 5) + Pc
-                    Objects[i].pCurrent = (((Otv - 0) * (Objects[i].Questions[NubmerQuestion].pPlus - Objects[i].pCurrent)) / 5) + Objects[i].pCurrent;
-                }
-            }
-            if (Otv == 0)
-            {
-                for (int i = 0; i < parser.Objects.Length; i++)
-                {
-                    //Pc = Pc
-                    Objects[i].pCurrent = Objects[i].pCurrent;
-                }
-            }*/
             //Обновляем
             Modify();
             if (NubmerQuestion + 1 == Quest.Length - 1)
@@ -145,8 +106,8 @@ namespace Expert_System
         {
             //Объекты
             string Object = "";
-            //Сортировка по возрастанию
-            var sortedObjects = Objects.OrderBy(u => u.pCurrent);
+            //Сортировка по возрастанию 
+            var sortedObjects = Objects.OrderByDescending(o => o.pCurrent);
             foreach(Object Obj in sortedObjects) { 
                 if (Obj.pCurrent == 0)
                 {
