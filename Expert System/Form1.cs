@@ -86,7 +86,11 @@ namespace Expert_System
                 return;
             }
             int Otv = Convert.ToInt32(AnswerText.Text);
-            if (Otv == 5)
+            for(int i = 0; i < Objects.Length; i++)
+            {
+                Objects[i].Calculate(Otv, NubmerQuestion);
+            }
+        /*    if (Otv == 5)
             {
                 for (int i = 0; i < Objects.Length; i++)
                 {
@@ -125,9 +129,9 @@ namespace Expert_System
                     //Pc = Pc
                     Objects[i].pCurrent = Objects[i].pCurrent;
                 }
-            }
-
-            
+            }*/
+            //Обновляем
+            Modify();
             if (NubmerQuestion + 1 == Quest.Length - 1)
             {
                 MessageBox.Show("Закончились вопросы",
@@ -137,7 +141,36 @@ namespace Expert_System
             }
         }
 
-   
+        void Modify()
+        {
+            //Объекты
+            string Object = "";
+            //Сортировка по возрастанию
+            var sortedObjects = Objects.OrderBy(u => u.pCurrent);
+            foreach(Object Obj in sortedObjects) { 
+                if (Obj.pCurrent == 0)
+                {
+                    Object += "//" + Obj.Name + "[" + Obj.pCurrent + "]" + "\n";
+                }
+                else
+                {
+                    Object += Obj.Name + "[" + Obj.pCurrent + "]" + "\n";
+                }
+            }
+            ObjectsText.Text = Object;
+
+            //Вопрос
+            string[] Quest = Questions.Split('\r');
+            QuestionText.Text = Quest[1 + NubmerQuestion];
+
+            //Вопросы
+            QuestionsText.Clear();
+            for (int i = 2 + NubmerQuestion; i < Quest.Length; i++)
+            {
+                QuestionsText.Text += Quest[i] + "\n";
+            }
+        }
+
 
     }
 }
